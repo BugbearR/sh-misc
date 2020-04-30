@@ -32,7 +32,7 @@ array_save() {
     for array_save_item in "$@"
     do
         eval "${array_save_VAR}_${array_save_i}=\"$array_save_item\""
-        array_save_i=$((array_save_i+1))
+        array_save_i=$((array_save_i + 1))
     done
     unset array_save_VAR array_save_i array_save_item
 }
@@ -53,5 +53,5 @@ array_list() {
         array_list_i=$((array_list_i + 1))
     done
     printf "%s" "$array_list_LIST"
-    unset array_list_N array_list_LIST unset array_list_i
+    unset array_list_N array_list_LIST array_list_i
 }
