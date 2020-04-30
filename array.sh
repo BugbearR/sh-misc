@@ -20,15 +20,22 @@ array_count() {
 }
 
 # Save $@ to array
-# Sample code
-# $@ is local variable in function. So, we can't define common function.
+# @param $1 array name
+# @param $2... 
 #
-# i=1
-# for a in "$@"
-# do
-#     eval "YOURVAR_$i=\"$a\""
-#     i=$((i+1))
-# done
+# How to use
+# array_save YOURVAR "$@"
+array_save() {
+    array_save_VAR=$1
+    shift
+    array_save_i=1
+    for array_save_item in "$@"
+    do
+        eval "${array_save_VAR}_${array_save_i}=\"$array_save_item\""
+        array_save_i=$((array_save_i+1))
+    done
+    unset array_save_VAR array_save_i array_save_item
+}
 
 # Get list of array
 # @param $1 array name
