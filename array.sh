@@ -36,15 +36,5 @@ array_count() {
 # How to use
 # eval "set -f -- "$(array_list YOURVAR)
 array_list() {
-    array_list_N=$(array_count $1)
-   
-    array_list_LIST=
-    for array_list_i in $(seq $array_list_N)
-    do
-    	array_list_LIST="$array_list_LIST "\"\$$1_$array_list_i\"
-    done
-    printf "%s" "$array_list_LIST"
-    unset array_list_N
-    unset array_list_LIST
-    unset array_list_i
+    seq -s ' ' $(array_count $1) | sed -e 's/\([1-9][0-9]*\)/"\$'$1'_\1"/g'
 }
