@@ -19,22 +19,22 @@ array_count() {
     set | grep "^$1_[0-9]*=" | wc -l
 }
 
-# Save $@ to array
+# Put all values to array
 # @param $1 array name
-# @param $2... 
+# @param $2... values
 #
 # How to use
-# array_save YOURVAR "$@"
-array_save() {
-    array_save_VAR=$1
+# array_put_all YOURVAR "$@"
+array_put_all() {
+    array_put_all_VAR=$1
     shift
-    array_save_i=1
-    for array_save_item in "$@"
+    array_put_all_i=1
+    for array_put_all_item in "$@"
     do
-        eval "${array_save_VAR}_${array_save_i}=\"$array_save_item\""
-        array_save_i=$((array_save_i + 1))
+        eval "${array_put_all_VAR}_${array_put_all_i}=\"$array_put_all_item\""
+        array_put_all_i=$((array_put_all_i + 1))
     done
-    unset array_save_VAR array_save_i array_save_item
+    unset array_put_all_VAR array_put_all_i array_put_all_item
 }
 
 # Get list of array
