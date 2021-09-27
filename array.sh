@@ -1,3 +1,5 @@
+# License: CC0-1.0
+
 # Set value to array
 # @param $1 array name
 # @param $2 index (start from 1)
